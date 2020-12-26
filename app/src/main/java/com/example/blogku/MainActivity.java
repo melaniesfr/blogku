@@ -8,10 +8,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.example.blogku.adapter.PostAdapter;
 import com.example.blogku.model.PostList;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.list_post);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
@@ -50,12 +56,10 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // Iterasi mengambil postingan
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                    PostList postList = ds.getValue(PostList.class);
-//                    itemPost.add(postList);
-
                     String judul = ds.child("judul").getValue().toString();
                     String file_gambar = ds.child("file_gambar").getValue().toString();
                     String isi_post = ds.child("isi_post").getValue().toString();
+
                     PostList data = new PostList(judul, file_gambar, isi_post);
                     itemPost.add(data);
                 }
@@ -67,8 +71,10 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setOnItemClickListener(new PostAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(int position) {
-                        String judul = itemPost.get(position).getJudul();
-                        startActivity(new Intent(MainActivity.this, DetailPostActivity.class).putExtra("judul", judul));
+                        String judulIntent = itemPost.get(position).getJudul();
+                        Intent intent = new Intent(MainActivity.this, DetailPostActivity.class);
+                        intent.putExtra("judul", judulIntent);
+                        startActivity(intent);
                     }
                 });
             }

@@ -1,6 +1,7 @@
 package com.example.blogku.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.blogku.DetailPostActivity;
+import com.example.blogku.MainActivity;
 import com.example.blogku.R;
 import com.example.blogku.model.PostList;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -18,7 +21,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
-    // List untuk menampung semua data postingan dari firebase
+
     private com.example.blogku.adapter.PostAdapter.OnItemClickListener mListener;
 
     List<PostList> postLists;
