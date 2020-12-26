@@ -16,15 +16,7 @@
         <activity android:name=".RecvK1Activity" />
         <activity android:name=".KategoriActivity" />
         <activity android:name=".PencarianActivity" />
-        <activity android:name=".PemainActivity" />
         <activity android:name=".DetailPostActivity" />
-        <activity android:name=".AdminRekapPostActivity" />
-        <activity android:name=".AdminDataPenulisActivity" />
-        <activity android:name=".AdminDataKategoriActivity" />
-        <activity android:name=".AdminProfileActivity" />
-        <activity android:name=".AdminActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".LoginActivityAdmin" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
