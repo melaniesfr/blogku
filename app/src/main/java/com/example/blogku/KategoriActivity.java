@@ -29,13 +29,13 @@ public class KategoriActivity extends AppCompatActivity {
     public void pindah(View v) {
         switch (v.getId()) {
             case R.id.kategori1:
-                startActivity(new Intent(KategoriActivity.this, AdminActivity.class));
+                startActivity(new Intent(KategoriActivity.this, RecvK1Activity.class));
                 break;
             case R.id.kategori2:
-                startActivity(new Intent(KategoriActivity.this, AdminProfileActivity.class));
+                startActivity(new Intent(KategoriActivity.this, RecvK2Activity.class));
                 break;
             case R.id.kategori3:
-                startActivity(new Intent(KategoriActivity.this, LoginActivity.class));
+                startActivity(new Intent(KategoriActivity.this, RecvK3Activity.class));
                 break;
         }
     }
